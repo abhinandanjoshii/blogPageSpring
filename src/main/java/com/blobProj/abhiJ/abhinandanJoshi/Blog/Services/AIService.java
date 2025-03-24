@@ -1,19 +1,24 @@
 package com.blobProj.abhiJ.abhinandanJoshi.Blog.Services;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
 public class AIService {
 
-    private static final String OPENAI_API_KEY = "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";
+    private static final String COHERE_API_KEY = "lvADcdrfc7dv32GKl0o4GbVSv2IePEGdL4mfhTgV"; // Replace with your Cohere API key
 
     public String summarizeBlog(String content) {
-        String apiUrl = "https://api.openai.com/v1/completions";
+        String apiUrl = "https://api.cohere.ai/v1/generate"; // Cohere's API URL
         RestTemplate restTemplate = new RestTemplate();
 
-        String body = "{\"model\":\"text-davinci-003\", \"prompt\":\"Summarize the following: " + content + "\", \"max_tokens\": 100}";
+        String body = "{\"model\":\"command-xlarge\", \"prompt\":\"Summarize the following text: " + content + "\", \"max_tokens\": 100}";
 
-        return restTemplate.postForObject(apiUrl, body, String.class);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + COHERE_API_KEY);
+        headers.set("Content-Type", "application/json");
+
+        return restTemplate.postForObject(apiUrl, new org.springframework.http.HttpEntity<>(body, headers), String.class);
     }
 }
