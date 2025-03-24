@@ -35,7 +35,8 @@ CREATE DATABASE <NAME>;
 Configure the Database: Update application.properties to configure PostgreSQL connection:
 
 ``
-spring.datasource.url=jdbc:postgresql://localhost:5432/<NAME OF THE DATABASE> spring.datasource.username=postgres spring.datasource.password=<YOUR POSTGRE PASS> spring.jpa.hibernate.ddl-auto=update spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect 
+spring.datasource.url=jdbc:postgresql://localhost:5432/<NAME OF THE DATABASE>
+spring.datasource.username=postgres spring.datasource.password=<YOUR POSTGRE PASS>
 ``
 
 ## Step 3: Build the Project
