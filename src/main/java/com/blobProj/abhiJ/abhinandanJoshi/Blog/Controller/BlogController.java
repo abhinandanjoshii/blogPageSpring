@@ -1,6 +1,7 @@
 package com.blobProj.abhiJ.abhinandanJoshi.Blog.Controller;
 
 import com.blobProj.abhiJ.abhinandanJoshi.Blog.Model.Blog;
+import com.blobProj.abhiJ.abhinandanJoshi.Blog.Services.AIService;
 import com.blobProj.abhiJ.abhinandanJoshi.Blog.Services.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,9 @@ public class BlogController {
 
     @Autowired
     private BlogService blogService;
+
+    @Autowired
+    private AIService aiService;
 
     @GetMapping
     public List<Blog> getAllBlogs() {
@@ -37,5 +41,14 @@ public class BlogController {
     @DeleteMapping("/{id}")
     public boolean deleteBlog(@PathVariable Long id) {
         return blogService.deleteBlog(id);
+    }
+
+    @PostMapping("/summarize/{id}")
+    public String summarizeBlog(@PathVariable Long id) {
+        Blog blog = blogService.getBlogById(id);
+        if (blog != null) {
+            return aiService.summarizeBlog(blog.getContent());
+        }
+        return "Blog not found!";
     }
 }
