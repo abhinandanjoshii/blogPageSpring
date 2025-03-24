@@ -20,7 +20,7 @@ Sign up at Cohere and obtain your API key.
 Replace the COHERE_API_KEY value in AIService.java with your Cohere API key:
 
 
-bash``
+``
 private static final String COHERE_API_KEY = "your-cohere-api-key"; 
 ``
 
@@ -34,7 +34,7 @@ CREATE DATABASE <NAME>;
 
 Configure the Database: Update application.properties to configure PostgreSQL connection:
 
-bash``
+``
 spring.datasource.url=jdbc:postgresql://localhost:5432/<NAME OF THE DATABASE> spring.datasource.username=postgres spring.datasource.password=<YOUR POSTGRE PASS> spring.jpa.hibernate.ddl-auto=update spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect 
 ``
 
@@ -43,15 +43,15 @@ Open the terminal and navigate to the project directory.
 
 Run the following Maven command to build the project:
 
-bash``
+``
 bash mvn clean install
 ``
 
 ## Step 4: Run the Application
 Once the project is built successfully, run the application using:
 
-bash``
-bash mvn spring-boot:run 
+``
+mvn spring-boot:run 
 ``
 
 Your application will start running on http://localhost:8080.
@@ -64,13 +64,13 @@ For testing , use the following API Collection to test -> https://drive.google.c
 
 Create the Docker Image: First, build the Docker image for your application. Open the terminal in your project directory and run the following command:
 
-``bash
+``
 docker build -t blog-app .
 ``
 
 Run the Docker Container: After the image is built, run the application in a Docker container with the following command:
 
-``bash
+``
 docker run -p 8080:8080 blog-app
 ``
 
