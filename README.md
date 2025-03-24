@@ -28,7 +28,7 @@ private static final String COHERE_API_KEY = "your-cohere-api-key";
 
 Create Database: Create a database in PostgreSQL :
 
-bash``
+``
 CREATE DATABASE <NAME>; 
 ``
 
@@ -44,7 +44,7 @@ Open the terminal and navigate to the project directory.
 Run the following Maven command to build the project:
 
 ``
-bash mvn clean install
+mvn clean install
 ``
 
 ## Step 4: Run the Application
